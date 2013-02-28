@@ -11,6 +11,7 @@ ssl_context.key = OpenSSL::PKey::RSA.new(File.open("users/alice/key.pem"))
 ssl_socket = OpenSSL::SSL::SSLSocket.new(socket, ssl_context)
 ssl_socket.sync_close = true
 ssl_socket.connect
+puts "Connected to: #{ssl_socket.peer_cert.inspect}"
 
 ssl_socket.puts("Hi, there!")
 ssl_socket.close
